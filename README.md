@@ -7,6 +7,13 @@ Im Normalfall heißt das für Dich dann, dass die Bilder **händisch sortiert we
 ## Installation
 Das Programm muss nicht installiert werden. Es reicht, die EXE-Datei auszuführen
 
+## Benutzung
+#VIDEO FOLGT#
+
+## To-Do's
+#FOLGT#
+
 ## Code Qualität
 Wie einigen auffallen dürfte - spätestens wenn sie in den Code schauen -, die Anwendung weißt eine nicht wirklich gute Code Qualität auf. Das könnte damit zusammenhängen, dass derjenige, der sie geschrieben hat - in Worten ich - eigendlich gar kein Programmierer ist, sondern nur ein Problem hatte, welches er durch eine bisher noch nicht vorhandene Anwendung lösen konnte.
 Daher ist mein Ansatz auch eher "Hauptsache es läuft" ;).
+
