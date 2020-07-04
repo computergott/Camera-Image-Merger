@@ -20,3 +20,5 @@ X:\Visual Studio\Camera Image Merger\bin\Debug\Camera Image Merger.xml
 X:\Visual Studio\Camera Image Merger\obj\Debug\Camera_Image_Merger.Main.resources
 X:\Visual Studio\Camera Image Merger\obj\Debug\Camera_Image_Merger.Resources.resources
 X:\Visual Studio\Camera Image Merger\obj\Debug\Camera Image Merger.vbproj.GenerateResource.cache
+X:\Visual Studio\Camera Image Merger\obj\Debug\Camera_Image_Merger.Settings.resources
+X:\Visual Studio\Camera Image Merger\obj\Debug\Camera_Image_Merger.logs.resources

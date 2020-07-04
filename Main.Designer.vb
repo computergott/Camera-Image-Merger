@@ -43,8 +43,10 @@ Partial Class Main
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Button8 = New System.Windows.Forms.Button()
-        Me.FileOverwrite = New System.Windows.Forms.CheckBox()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
         Me.SuspendLayout()
         '
         'Sources
@@ -189,10 +191,10 @@ Partial Class Main
         '
         Me.Button6.Location = New System.Drawing.Point(15, 388)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(247, 23)
+        Me.Button6.Size = New System.Drawing.Size(113, 23)
         Me.Button6.TabIndex = 15
         Me.Button6.TabStop = False
-        Me.Button6.Text = "Dateien kopieren - Los gehts!"
+        Me.Button6.Text = "Dateien kopieren"
         Me.Button6.UseVisualStyleBackColor = True
         '
         'Label3
@@ -228,18 +230,9 @@ Partial Class Main
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(245, 23)
         Me.Button8.TabIndex = 19
+        Me.Button8.TabStop = False
         Me.Button8.Text = "RESET"
         Me.Button8.UseVisualStyleBackColor = True
-        '
-        'FileOverwrite
-        '
-        Me.FileOverwrite.AutoSize = True
-        Me.FileOverwrite.Location = New System.Drawing.Point(136, 321)
-        Me.FileOverwrite.Name = "FileOverwrite"
-        Me.FileOverwrite.Size = New System.Drawing.Size(124, 30)
-        Me.FileOverwrite.TabIndex = 20
-        Me.FileOverwrite.Text = "Vorhandene Dateien" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "überschreiben"
-        Me.FileOverwrite.UseVisualStyleBackColor = True
         '
         'ProgressBar1
         '
@@ -248,13 +241,44 @@ Partial Class Main
         Me.ProgressBar1.Size = New System.Drawing.Size(245, 23)
         Me.ProgressBar1.TabIndex = 21
         '
+        'Button9
+        '
+        Me.Button9.Location = New System.Drawing.Point(147, 388)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(113, 23)
+        Me.Button9.TabIndex = 22
+        Me.Button9.TabStop = False
+        Me.Button9.Text = "Einstellungen"
+        Me.Button9.UseVisualStyleBackColor = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 418)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(47, 13)
+        Me.Label6.TabIndex = 23
+        Me.Label6.Text = "Beta 1.1"
+        '
+        'LinkLabel1
+        '
+        Me.LinkLabel1.AutoSize = True
+        Me.LinkLabel1.Location = New System.Drawing.Point(738, 418)
+        Me.LinkLabel1.Name = "LinkLabel1"
+        Me.LinkLabel1.Size = New System.Drawing.Size(30, 13)
+        Me.LinkLabel1.TabIndex = 24
+        Me.LinkLabel1.TabStop = True
+        Me.LinkLabel1.Text = "Logs"
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 427)
+        Me.ClientSize = New System.Drawing.Size(784, 438)
+        Me.Controls.Add(Me.LinkLabel1)
+        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.ProgressBar1)
-        Me.Controls.Add(Me.FileOverwrite)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
@@ -305,6 +329,8 @@ Partial Class Main
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents Button8 As Button
-    Friend WithEvents FileOverwrite As CheckBox
     Friend WithEvents ProgressBar1 As ProgressBar
+    Friend WithEvents Button9 As Button
+    Friend WithEvents Label6 As Label
+    Friend WithEvents LinkLabel1 As LinkLabel
 End Class

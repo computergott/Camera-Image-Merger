@@ -11,6 +11,8 @@
 
     Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ProgressBar1.Visible = False
+        Settings.WorkingSpeed.Text = "2 - Normal"
+        Settings.DateMode.Text = "Änderungsdatum"
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
@@ -123,43 +125,93 @@
         FilesScceeded.Items.Clear()
         FilesFailed.Items.Clear()
 
+        If Settings.LogOnlyErrors.CheckState = CheckState.Unchecked Then
+            logs.AddLog("=== Ein neuer Kopierdurchlauf wurde gestartet ===")
+
+        End If
 
 
         For Each file In FileList.Items
 
             Try
                 Dim NewFileName As String
-                NewFileName = System.IO.File.GetCreationTime(file)
+
+                Select Case Settings.DateMode.Text
+                    Case "Änderungsdatum"
+                        NewFileName = System.IO.File.GetLastWriteTime(file)
+                    Case "Erstelldatum"
+                        NewFileName = System.IO.File.GetCreationTime(file)
+                End Select
+
                 NewFileName = NewFileName.Replace(":", ".")
                 NewFileName = NewFileName.Replace(" ", "_")
                 NewFileName = NewFileName + IO.Path.GetExtension(file)
                 NewFileName = Destination.Text + NewFileName
 
-                If System.IO.File.Exists(NewFileName) Then 'Pfad = Kompeltter Pfad mit Dateinamen + ENdung
+                If System.IO.File.Exists(NewFileName) Then
 
-                    If FileOverwrite.Checked Then
+                    If Settings.FileOverwrite.Checked Then
                         My.Computer.FileSystem.DeleteFile(NewFileName)
                         FileCopy(file, NewFileName)
                         FilesScceeded.Items.Add(file)
                     Else
+
+                        If Settings.LogOnlyErrors.CheckState = CheckState.Unchecked Then
+                            logs.AddLog("Die Datei " + file + " wurde nicht kopiert, da sie schon vorhanden ist.")
+
+                        End If
+
                         FilesFailed.Items.Add(file)
                     End If
 
                 Else
                     FileCopy(file, NewFileName)
                     FilesScceeded.Items.Add(file)
+                    If Settings.LogOnlyErrors.CheckState = CheckState.Unchecked Then
+                        logs.AddLog("Die Datei " + file + " wurde kopiert.")
+                    End If
                 End If
 
 
             Catch ex As Exception
                 FilesFailed.Items.Add(file)
+                logs.AddLog("Die Datei " + file + " konnte nicht Kopiert werden:" + ex.GetType.ToString)
             End Try
             FilesProcessed = FilesProcessed + 1
             ProgressBar1.Value = FilesProcessed / FilesCount * 100
-            warte(0.1)
+
+            Select Case Settings.WorkingSpeed.Text
+                Case "1 - Langsamer"
+                    warte(0.5)
+                Case "2 - Normal"
+                    warte(0.2)
+                Case "3 - Schnell"
+
+            End Select
 
         Next
-        MsgBox("Der Vorgang wurde abgeschlossen", MsgBoxStyle.Information, Title:="Fertig")
+
+        If FilesFailed.Items.Count = 0 Then
+            MsgBox("Der Vorgang wurde abgeschlossen", MsgBoxStyle.Information, Title:="Fertig")
+        Else
+            Select Case MessageBox.Show(FilesFailed.Items.Count.ToString + " Dateien konnten nicht kopiert werden. Sollen diese für einen neuen Versuch in die Dateiliste übernommen werden?", "Fehlerhafte Dateien", MessageBoxButtons.YesNo)
+                Case Windows.Forms.DialogResult.Yes
+                    FileList.Items.Clear()
+                    FilesScceeded.Items.Clear()
+
+                    For Each item In FilesFailed.Items
+                        FileList.Items.Add(item)
+                    Next
+
+                    FilesFailed.Items.Clear()
+
+                    MsgBox("Die Dateien wurden in die Liste geschoben" + vbNewLine + vbNewLine + "Starte jetzt einfach den Kopiervorgang", MsgBoxStyle.Information, Title:="Dateien hinzugefügt")
+
+                Case Windows.Forms.DialogResult.No
+
+            End Select
+        End If
+
         ProgressBar1.Visible = False
     End Sub
 
@@ -170,5 +222,14 @@
         FilesFailed.Items.Clear()
         FilesScceeded.Items.Clear()
         FileInfo.Text = "Keine Datei gewählt"
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        Settings.ShowDialog()
+
+    End Sub
+
+    Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
+        logs.ShowDialog()
     End Sub
 End Class
