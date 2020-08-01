@@ -109,7 +109,7 @@ Partial Class Settings
         '
         Me.DateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.DateMode.FormattingEnabled = True
-        Me.DateMode.Items.AddRange(New Object() {"Änderungsdatum", "Erstelldatum"})
+        Me.DateMode.Items.AddRange(New Object() {"Änderungsdatum", "Erstelldatum", "Kein Datum (Nur Präfix)"})
         Me.DateMode.Location = New System.Drawing.Point(11, 71)
         Me.DateMode.Name = "DateMode"
         Me.DateMode.Size = New System.Drawing.Size(194, 21)

@@ -47,6 +47,8 @@ Partial Class Main
         Me.Button9 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.LinkLabel1 = New System.Windows.Forms.LinkLabel()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.prefix = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '
         'Sources
@@ -152,7 +154,7 @@ Partial Class Main
         Me.FilesFailed.FormattingEnabled = True
         Me.FilesFailed.Location = New System.Drawing.Point(520, 238)
         Me.FilesFailed.Name = "FilesFailed"
-        Me.FilesFailed.Size = New System.Drawing.Size(248, 173)
+        Me.FilesFailed.Size = New System.Drawing.Size(248, 238)
         Me.FilesFailed.TabIndex = 10
         Me.FilesFailed.TabStop = False
         '
@@ -182,14 +184,14 @@ Partial Class Main
         Me.FileInfo.Multiline = True
         Me.FileInfo.Name = "FileInfo"
         Me.FileInfo.ReadOnly = True
-        Me.FileInfo.Size = New System.Drawing.Size(245, 173)
+        Me.FileInfo.Size = New System.Drawing.Size(245, 238)
         Me.FileInfo.TabIndex = 14
         Me.FileInfo.TabStop = False
         Me.FileInfo.Text = "Keine Datei gewählt"
         '
         'Button6
         '
-        Me.Button6.Location = New System.Drawing.Point(15, 388)
+        Me.Button6.Location = New System.Drawing.Point(15, 453)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(113, 23)
         Me.Button6.TabIndex = 15
@@ -226,7 +228,7 @@ Partial Class Main
         '
         'Button8
         '
-        Me.Button8.Location = New System.Drawing.Point(15, 359)
+        Me.Button8.Location = New System.Drawing.Point(15, 424)
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(245, 23)
         Me.Button8.TabIndex = 19
@@ -236,14 +238,14 @@ Partial Class Main
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(15, 359)
+        Me.ProgressBar1.Location = New System.Drawing.Point(15, 424)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(245, 23)
         Me.ProgressBar1.TabIndex = 21
         '
         'Button9
         '
-        Me.Button9.Location = New System.Drawing.Point(147, 388)
+        Me.Button9.Location = New System.Drawing.Point(147, 453)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(113, 23)
         Me.Button9.TabIndex = 22
@@ -254,27 +256,46 @@ Partial Class Main
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 418)
+        Me.Label6.Location = New System.Drawing.Point(12, 480)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(47, 13)
         Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Beta 1.1"
+        Me.Label6.Text = "Beta 1.2"
         '
         'LinkLabel1
         '
         Me.LinkLabel1.AutoSize = True
-        Me.LinkLabel1.Location = New System.Drawing.Point(738, 418)
+        Me.LinkLabel1.Location = New System.Drawing.Point(738, 480)
         Me.LinkLabel1.Name = "LinkLabel1"
         Me.LinkLabel1.Size = New System.Drawing.Size(30, 13)
         Me.LinkLabel1.TabIndex = 24
         Me.LinkLabel1.TabStop = True
         Me.LinkLabel1.Text = "Logs"
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(12, 357)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(33, 13)
+        Me.Label7.TabIndex = 26
+        Me.Label7.Text = "Präfix"
+        '
+        'prefix
+        '
+        Me.prefix.Location = New System.Drawing.Point(15, 373)
+        Me.prefix.Name = "prefix"
+        Me.prefix.Size = New System.Drawing.Size(245, 20)
+        Me.prefix.TabIndex = 25
+        Me.prefix.TabStop = False
+        '
         'Main
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(784, 438)
+        Me.ClientSize = New System.Drawing.Size(784, 502)
+        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.prefix)
         Me.Controls.Add(Me.LinkLabel1)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button9)
@@ -333,4 +354,6 @@ Partial Class Main
     Friend WithEvents Button9 As Button
     Friend WithEvents Label6 As Label
     Friend WithEvents LinkLabel1 As LinkLabel
+    Friend WithEvents Label7 As Label
+    Friend WithEvents prefix As TextBox
 End Class

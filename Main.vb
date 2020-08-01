@@ -141,6 +141,8 @@
                         NewFileName = System.IO.File.GetLastWriteTime(file)
                     Case "Erstelldatum"
                         NewFileName = System.IO.File.GetCreationTime(file)
+                    Case "Kein Datum (Nur Präfix)"
+                        NewFileName = prefix.Text + "_" + file.ToString
                 End Select
 
                 NewFileName = NewFileName.Replace(":", ".")
@@ -231,5 +233,24 @@
 
     Private Sub LinkLabel1_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles LinkLabel1.LinkClicked
         logs.ShowDialog()
+    End Sub
+
+    Private Sub prefix_insertchar(sender As Object, e As KeyPressEventArgs) Handles prefix.KeyPress, prefix.KeyPress
+        Dim c = e.KeyChar
+        If c >= "a" AndAlso c <= "z" OrElse c >= "A" AndAlso c <= "Z" Or Not Char.IsDigit(c, 0) = False Then
+        Else
+            e.Handled = True
+        End If
+    End Sub
+
+    Private Sub prefix_DeleteChar(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyEventArgs) Handles prefix.KeyDown
+        If e.KeyData = Keys.Back Then
+            If prefix.Text = "" Then
+                Return
+            Else
+                prefix.Text = prefix.Text.Substring(0, prefix.Text.Length - 1)
+                prefix.SelectionStart = prefix.TextLength
+            End If
+        End If
     End Sub
 End Class
