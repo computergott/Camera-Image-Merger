@@ -1,4 +1,6 @@
-﻿Public Class Main
+﻿Imports System.IO
+
+Public Class Main
     Private Sub warte(Sekunden As Double)
         Dim ZeitSpanne As Double
         Dim Start As Double
@@ -138,11 +140,28 @@
 
                 Select Case Settings.DateMode.Text
                     Case "Änderungsdatum"
-                        NewFileName = System.IO.File.GetLastWriteTime(file)
+                        If prefix.Text = "" Then
+                            NewFileName = System.IO.File.GetLastWriteTime(file)
+                        Else
+                            NewFileName = prefix.Text + "_" + System.IO.File.GetLastWriteTime(file)
+                        End If
                     Case "Erstelldatum"
-                        NewFileName = System.IO.File.GetCreationTime(file)
-                    Case "Kein Datum (Nur Präfix)"
-                        NewFileName = prefix.Text + "_" + file.ToString
+                        If prefix.Text = "" Then
+                            NewFileName = System.IO.File.GetCreationTime(file)
+                        Else
+                            NewFileName = prefix.Text + "_" + System.IO.File.GetCreationTime(file)
+                        End If
+                    Case "Nur Präfix (+ Dateiname)"
+                        NewFileName = prefix.Text + "_" + Path.GetFileName(file)
+                    Case "Präfix + Nummerierung"
+                        Dim Nummer As String = FilesProcessed + 1
+
+                        While Nummer.Length < FilesCount.ToString.Length
+                            Nummer = "0" + Nummer
+                        End While
+
+
+                        NewFileName = prefix.Text + "_" + (Nummer).ToString
                 End Select
 
                 NewFileName = NewFileName.Replace(":", ".")
@@ -177,7 +196,7 @@
 
             Catch ex As Exception
                 FilesFailed.Items.Add(file)
-                logs.AddLog("Die Datei " + file + " konnte nicht Kopiert werden:" + ex.GetType.ToString)
+            logs.AddLog("Die Datei " + file + " konnte nicht Kopiert werden:" + ex.GetType.ToString)
             End Try
             FilesProcessed = FilesProcessed + 1
             ProgressBar1.Value = FilesProcessed / FilesCount * 100

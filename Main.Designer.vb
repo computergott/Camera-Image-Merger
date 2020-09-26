@@ -260,7 +260,7 @@ Partial Class Main
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(47, 13)
         Me.Label6.TabIndex = 23
-        Me.Label6.Text = "Beta 1.2"
+        Me.Label6.Text = "Beta 1.3"
         '
         'LinkLabel1
         '

@@ -101,15 +101,15 @@ Partial Class Settings
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(11, 55)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(88, 13)
+        Me.Label3.Size = New System.Drawing.Size(86, 13)
         Me.Label3.TabIndex = 28
-        Me.Label3.Text = "Datumsermittlung" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label3.Text = "Dateibenennung"
         '
         'DateMode
         '
         Me.DateMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.DateMode.FormattingEnabled = True
-        Me.DateMode.Items.AddRange(New Object() {"Änderungsdatum", "Erstelldatum", "Kein Datum (Nur Präfix)"})
+        Me.DateMode.Items.AddRange(New Object() {"Änderungsdatum", "Erstelldatum", "Nur Präfix (+ Dateiname)", "Präfix + Nummerierung"})
         Me.DateMode.Location = New System.Drawing.Point(11, 71)
         Me.DateMode.Name = "DateMode"
         Me.DateMode.Size = New System.Drawing.Size(194, 21)

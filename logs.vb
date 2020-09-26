@@ -13,7 +13,4 @@
 
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        AddLog("Test")
-    End Sub
 End Class
